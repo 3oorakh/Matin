@@ -1102,15 +1102,69 @@ html, body {
 }
 
 /* --------- گوشی در حالت افقی (ارتفاع کم) --------- */
-@media (max-height: 480px) {
+@media (orientation: landscape) and (max-height: 620px) {
 
+    /* در حالت افقی ارتفاع کمه ولی عرض زیاده، پس دکمه‌ها به‌جای
+       اینکه زیر متن بشینن (و ارتفاع رو بخورن)، می‌رن سمت چپ کادر
+       و متن سمت راست جا می‌گیره. */
     .dialogue {
-        height: 40%;
-        padding: 2% 5%;
+        height: 46%;
+        padding: 2.5vh 4%;
     }
 
+    #dialogueText {
+        font-size: clamp(18px, calc(1.4vw + 2.4vh), 26px);
+        line-height: 1.65;
+    }
+
+    .name {
+        font-size: clamp(13px, calc(0.9vw + 1.4vh), 17px);
+        margin-bottom: 4px;
+    }
+
+    /* جای خالی سمت چپ برای دکمه‌ها، نه زیر متن */
     .dialogue.has-controls {
-        padding-bottom: calc(clamp(48px, 22vh, 96px) + env(safe-area-inset-bottom, 0px));
+        padding-bottom: 2.5vh;
+        padding-left: 40%;
+    }
+
+    .choiceButtons,
+    .callButtons.with-choices ~ .choiceButtons {
+        left: 4% !important;
+        right: auto !important;
+        bottom: 3vh !important;
+
+        transform: none !important;
+
+        width: 33%;
+
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-end;
+
+        gap: 6px;
+    }
+
+    .choiceBtn {
+        max-width: 100%;
+        padding: 8px 14px;
+        font-size: clamp(12px, calc(0.7vw + 1.6vh), 15px);
+    }
+
+    /* صحنه‌ی تماس: تایمر و دکمه‌های جواب/رد هم سمت چپ */
+    .callButtons {
+        left: 4% !important;
+        right: auto !important;
+        bottom: 3vh !important;
+
+        transform: none !important;
+    }
+
+    /* وقتی دوراهی هم هست، تایمر می‌ره بالای صفحه تا جلوی دکمه‌ها رو نگیره */
+    .callButtons.with-choices {
+        top: 3vh !important;
+        bottom: auto !important;
+        left: 4% !important;
     }
 
     .matin,
@@ -1119,20 +1173,16 @@ html, body {
     .bully {
         height: 88%;
         max-height: 88%;
-        max-width: 38%;
+        max-width: 34%;
     }
 
     .phone {
         height: 40%;
-        max-width: 30%;
-    }
-
-    .choiceButtons {
-        width: 86%;
+        max-width: 28%;
     }
 
     .ending-scene .dialogue {
-        padding: 10% 8% 6%;
+        padding: 9vh 8% 5vh;
     }
 
 }
